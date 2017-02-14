@@ -1,0 +1,59 @@
+#This is the main file for the DBZ team project.
+#It will house most of our code.
+#Midterm Ian, Michael, Brady
+#Text adventure game
+
+import random
+import time
+
+def displayIntro():
+    print("You just got home from school and are standing outside of your house in the driveway.")
+    print("There will be a series of options for you to choose from which will determine how you spend the rest of your day.")
+    print("What are you gonna do?")
+    time.sleep(2)
+    print("Since you just got home, you can go inside and start wasting time or you can go check the mail any see if your new video card arrvied from Amazon.")
+    print("The door to your house is locked and you're not sure if anyone else is home. The mailbox is at the end of the driveway and your neighbor is outside mowing his yard.")
+    print("Do you: 1) want to go check the mail and potentially have to talk to your annoying neighbor or 2) do you just want to go inside?")
+
+def choosedoor():
+    door = input('> ')
+
+    if door == "1":
+        print("You chose door #1. You walk in and see.....")
+        print("What do you want to do?")
+        print("Option1: ...........")
+        print("Option2: ...........")
+
+        whatyousee = input('>')
+
+        if whatyousee == "1":
+            print("...........")
+
+        elif whatyousee == "2":
+            print(".........")
+
+    else:
+        print(".............")
+
+    elif door == "2":
+    print("You chose door #2. You walk in and........")
+    print("What are you going to do?")
+    print("Option1: ............")
+    print("Option2: ............")
+
+    whatyousee2 = input('>')
+
+    if whatyousee2 == "1":
+        print(".............")
+
+    elif whatyousee2 == "2":
+        print("............")
+
+    else:
+        print("...........")
+
+def checkPath():
+    print("")
+
+displayIntro()
+chooseDoor()
