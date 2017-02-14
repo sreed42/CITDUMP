@@ -3,7 +3,6 @@
 #Midterm Jacob, Jaden, Elizabeth
 #Text adventure game
 
-import random
 import time
 
 def displayIntro():
