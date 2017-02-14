@@ -4,7 +4,6 @@
 #Text adventure game
 #Hope this works
 
-import random
 import time
 
 def displayIntro():
