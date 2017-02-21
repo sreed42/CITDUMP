@@ -3,7 +3,7 @@
 #Midterm Jacob, Jaden, Elizabeth
 #Text adventure game
 #Hope this works
-#Test Commit
+
 
 import random
 import time
