@@ -43,14 +43,6 @@ while game==on:
 		
         direction=raw_input("What would you like to do?\n")
 
-        if direction=="sandwich":
-            if "bread" and "peanut butter" and "jelly" in items:
-                print "You have all the stuff you need to make an after-school snack. You make yourself a delicious PBJ sandwich and head back out to the entryway."
-                items.remove ("knife")
-                items.remove ("bread")
-                items.remove ("peanut butter")
-                items.remove ("jelly")
-                items.append ("sandwich")
             else:
               print "You walk into the kitchen. You could make a sandwich but you'll need to gather all the stuff you need to make it. You haven't gone to the store in a while so you're going to have to settle for a peanut butter and jelly sandwich. You'll need to find some bread, peanut butter, jelly and a knife to make the sandwich."
 			  place=kitchen
@@ -89,7 +81,7 @@ while game==on:
 
 		print "You enter the kitchen."
 
-        direction=raw_input("What would you like to do?\n")
+        direction=input("What would you like to do?\n")
 
         if direction=="fridge":
             print "You look inside the fridge. There's pretty much nothing in there except some bottled water and a jar of grape jelly. You could use the jelly to make a sandwich later."
@@ -102,6 +94,15 @@ while game==on:
         elif direction=="drawer":
             print "You head back to Jersey"
             place=town
+
+        elif direction=="sandwich":
+            if "bread" and "peanut butter" and "jelly" in items:
+                print "You have all the stuff you need to make an after-school snack. You make yourself a delicious PBJ sandwich and head back out to the entryway."
+                items.remove ("knife")
+                items.remove ("bread")
+                items.remove ("peanut butter")
+                items.remove ("jelly")
+                items.append ("sandwich")
 
         elif direction=="entry":
             print "You enter the kitchen. In front of you is the fridge. To your left are some cabinets. To your right is some empty counter-space and some drawers for silverware and whatnot. Behind you is the entryway to your house."
@@ -118,7 +119,7 @@ while game==on:
                 print "You can't search for that"
         
         elif direction=="commands":
-            print "type the room you would like to enter to navigate,type the command use followed by the item name to use an item, type the command inventory to look at the items in your posession, type the command look to look around you, type the command search followed by a target to search for people or items, type the command commands to repeat these directions"
+            print "Commands available change per room. Typical commands available will include the names of adjacent rooms and potential actions pertinent to the room you are in currently. Type the command USE followed by the item name to use an item, type the command INVENTORY to look at the items in your posession, type the command LOOK to look around you, type the command SEARCH followed by a target to search for people or items, type the command COMMANDS to repeat these directions."
 
 
     while place==bedroom:
@@ -151,7 +152,7 @@ while game==on:
            print items
 
         elif direction=="commands":
-            print "type the room you would like to enter to navigate,type the command use followed by the item name to use an item, type the command inventory to look at the items in your posession, type the command look to look around you, type the command search followed by a target to search for people or items, type the command commands to repeat these directions"
+            print "Commands available change per room. Typical commands available will include the names of adjacent rooms and potential actions pertinent to the room you are in currently. Type the command USE followed by the item name to use an item, type the command INVENTORY to look at the items in your posession, type the command LOOK to look around you, type the command SEARCH followed by a target to search for people or items, type the command COMMANDS to repeat these directions."
 
 
     while place==bathroom:
@@ -159,7 +160,7 @@ while game==on:
         direction=raw_input("What would you like to do?\n")
 
         if direction=="west":
-            print "You head back into the forest"
+            print "..."
             place==forest
 
         elif direction=="south":
@@ -195,12 +196,16 @@ while game==on:
         elif direction=="look":
             print "You are in the bathroom. The toilet is to your immediate left. In front of you is a sink for washing your hands. Below the sink is a cabinet for storing extra toilet paper."
 
-        elif "use" in direction:
-            if "toilet paper" in items:
-            print "..."
-
+        elif "toilet" in direction:
+            if "toilet paper" not in items:
+            print "You notice that there is no toilet paper on the roll. You can't use the bathroom until you find some! Hurry or you'll mess your pants!!"
+		
+	    if "toilet paper" in items:
+	    items.remove "toilet paper"
+	    print "You sit down just in time to avoid having an accident! Unfortunately, you take so long on the toilet that your left start going to sleep. You need to eat more fiber and less red meat."
+	
         elif direction=="commands":
-            print "type the room you would like to enter to navigate,type the command use followed by the item name to use an item, type the command inventory to look at the items in your posession, type the command look to look around you, type the command search followed by a target to search for people or items, type the command commands to repeat these directions"
+            print "Commands available change per room. Typical commands available will include the names of adjacent rooms and potential actions pertinent to the room you are in currently. Type the command USE followed by the item name to use an item, type the command INVENTORY to look at the items in your posession, type the command LOOK to look around you, type the command SEARCH followed by a target to search for people or items, type the command COMMANDS to repeat these directions."
 
 
         elif direction=="inventory":
