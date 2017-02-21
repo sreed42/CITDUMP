@@ -48,8 +48,7 @@ while game==on:
 		place=kitchen
 		
         elif direction=="living room":
-		print "You walk into the living room. There is a comfy looking couch in front of a big-screen TV and the remote is sitting on the coffee table in front of the couch. You should probably get a snack before you sit down to watch TV. You walk back into the foyer."
-		place=living room
+		print "You walk forward into the living room."
 			
         elif direction=="bathroom":
 		print "You run down the hallway and enter the bathroom."
@@ -75,7 +74,7 @@ while game==on:
 		print "There's nothing of importance to search"
 
         else:
-		print "Please type a command"
+		print "Please type a valid command."
 
     while place==kitchen
 
@@ -153,7 +152,7 @@ while game==on:
             print "Commands available change per room. Typical commands available will include the names of adjacent rooms and potential actions pertinent to the room you are in currently. Type the command USE followed by the item name to use an item, type the command INVENTORY to look at the items in your posession, type the command LOOK to look around you, type the command SEARCH followed by a target to search for people or items, type the command COMMANDS to repeat these directions."
 
 
-    while place==bathroom:
+     while place==bathroom:
 
         direction=raw_input("What would you like to do?\n")
 
@@ -205,13 +204,23 @@ while game==on:
         elif direction=="commands":
             print "Commands available change per room. Typical commands available will include the names of adjacent rooms and potential actions pertinent to the room you are in currently. Type the command USE followed by the item name to use an item, type the command INVENTORY to look at the items in your posession, type the command LOOK to look around you, type the command SEARCH followed by a target to search for people or items, type the command COMMANDS to repeat these directions."
 
-
         elif direction=="inventory":
             print items
 
         elif "search" in direction:
             if "cabinet" 
             print "Let's not search that now."
+
+     while place==living room
+     
+     	if "sandwich" not in items
+	print You walk into the living room. There is a comfy looking couch in front of a big-screen TV and the remote is sitting on the coffee table in front of the couch. You should probably get a snack before you sit down to watch TV. You walk back into the foyer."
+	place=foyer
+	
+	elif:print "
+			
+
+
 
 while game==lose:
     print "Thank you for playing!"
