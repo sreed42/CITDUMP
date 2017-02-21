@@ -41,7 +41,7 @@ while game==on:
 
     while place==foyer:
 		
-        direction=raw_input("What would you like to do?\n")
+        direction=input("What would you like to do?\n")
         
 	if direction=="kitchen":
 		print "You walk into the kitchen. You could make a sandwich but you'll need to gather all the stuff you need to make it. You haven't gone to the store in a while so you're going to have to settle for a peanut butter and jelly sandwich. You'll need to find some bread, peanut butter, jelly and a knife to make the sandwich."
@@ -89,8 +89,8 @@ while game==on:
 		tems.append ("peanut butter")
 			
         elif direction=="drawer":
-		print "You head back to the foyer."
-            	place=foyer
+		print "You open the drawer and find a single butter knife. You can use the butter knife to make your sandwich."
+            	items.append "knife"
 
         elif direction=="sandwich":
 		if "bread" and "peanut butter" and "jelly" in items:
@@ -217,7 +217,7 @@ while game==on:
 	print You walk into the living room. There is a comfy looking couch in front of a big-screen TV and the remote is sitting on the coffee table in front of the couch. You should probably get a snack before you sit down to watch TV. You walk back into the foyer."
 	place=foyer
 	
-	elif:print "
+	elif:print "You sit down on the comfy couch. There is a coffee table in front of you with a remote control for the TV and cable box on top of it. Before you start watching some of your favorite shows you should probably go to the restroom. 
 			
 
 
