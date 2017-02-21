@@ -1,0 +1,222 @@
+#Text Adventure
+#This is the main file for the DBZ team project.
+#Michael Zarro, Ian Bernard, Brady Dean
+
+    
+
+print "You just got home from school and walked in your front door. At this point, you have a few choices to make as to how you will spend the rest of your day at home. "
+
+
+items=[]
+
+place=1
+
+foyer=2
+
+bathroom=3
+
+kitchen=4
+
+bedroom=5
+
+dead=6
+
+game=0
+
+on=90
+
+win=91
+
+lose=92
+
+game=on
+
+place=foyer
+
+
+
+while game==on:
+	
+	print "You're tired after a long day of programming, you're hungry, you need to go to the bathroom and you're looking forward to playing some video games or watching TV. "
+
+    while place==foyer:
+		
+        direction=raw_input("What would you like to do?\n")
+
+        if direction=="sandwich":
+            if "bread" and "peanut butter" and "jelly" in items:
+                print "You have all the stuff you need to make an after-school snack. You make yourself a delicious PBJ sandwich and head back out to the entryway."
+                items.remove ("knife")
+                items.remove ("bread")
+                items.remove ("peanut butter")
+                items.remove ("jelly")
+                items.append ("sandwich")
+            else:
+              print "You walk into the kitchen. You could make a sandwich but you'll need to gather all the stuff you need to make it. You haven't gone to the store in a while so you're going to have to settle for a peanut butter and jelly sandwich. You'll need to find some bread, peanut butter, jelly and a knife to make the sandwich."
+			  place=kitchen
+        
+        elif direction=="living room":
+            print "You walk into the living room. There is a comfy looking couch in front of a big-screen TV and the remote is sitting on the coffee table in front of the couch. You should probably get a snack before you sit down to watch TV. You walk back into the foyer."
+			place=living room
+			
+        elif direction=="bathroom":
+            print "You run down the hallway and enter the bathroom."
+			place=bathroom
+
+        elif direction=="bedroom":
+            print "You walk down the hall and enter your bedroom."
+            place=bedroom
+
+        elif direction=="commands":
+            print "type the room you would like to enter to navigate,type the command use followed by the item name to use an item, type the command inventory to look at the items in your posession, type the command look to look around you, type the command search followed by a target to search for people or items, type the command commands to repeat these directions"
+
+        elif direction=="inventory":
+            print items
+    
+        elif direction=="look":
+            print "You've just walked in the front door. The kitchen is to your left. To your right is the hallway that leads to your bedroom and the bathroom. Straight ahead of you is the living room. "
+
+        elif "use" in direction:
+            print "You have nothing to use."
+
+        elif "search" in direction:
+            print "There's nothing of importance to search"
+
+        else:
+            print "Please type a command"
+
+    while place==kitchen:
+
+		print "You enter the kitchen."
+
+        direction=raw_input("What would you like to do?\n")
+
+        if direction=="fridge":
+            print "You look inside the fridge. There's pretty much nothing in there except some bottled water and a jar of grape jelly. You could use the jelly to make a sandwich later."
+            items.append ("jelly")
+        
+        elif direction=="cabinet":
+            print "The cabinets are empty except for a jar of creamy peanut butter and some expty chip bags. You really need to go to the store and buy some food. You might be able to use the peanut to make a sandwich."
+			items.append ("peanut butter")
+			
+        elif direction=="drawer":
+            print "You head back to Jersey"
+            place=town
+
+        elif direction=="entry":
+            print "You enter the kitchen. In front of you is the fridge. To your left are some cabinets. To your right is some empty counter-space and some drawers for silverware and whatnot. Behind you is the entryway to your house."
+
+        elif "use" in direction:
+            print "you can't use that"
+                                        
+        elif direction=="inventory":
+            print items
+
+        elif "search" in direction:
+            print "..."
+            else:
+                print "You can't search for that"
+        
+        elif direction=="commands":
+            print "type the room you would like to enter to navigate,type the command use followed by the item name to use an item, type the command inventory to look at the items in your posession, type the command look to look around you, type the command search followed by a target to search for people or items, type the command commands to repeat these directions"
+
+
+    while place==bedroom:
+
+        direction=raw_input("What would you like to do?\n")
+
+        if direction=="music":
+            print "music"
+
+        elif direction=="foyer":
+            print "foyer"
+            place=forest
+    
+        elif direction=="computer":
+            print "Computer"
+
+        elif direction=="bed":
+            print "bed"
+
+        elif direction=="look":
+            print "bedroom description."
+
+        elif "search" in direction:
+            print "You cannot search that"
+
+        elif "use" in direction:
+            print "You cannot use that"
+
+        elif direction=="inventory":
+           print items
+
+        elif direction=="commands":
+            print "type the room you would like to enter to navigate,type the command use followed by the item name to use an item, type the command inventory to look at the items in your posession, type the command look to look around you, type the command search followed by a target to search for people or items, type the command commands to repeat these directions"
+
+
+    while place==bathroom:
+
+        direction=raw_input("What would you like to do?\n")
+
+        if direction=="west":
+            print "You head back into the forest"
+            place==forest
+
+        elif direction=="south":
+            print "..."
+                
+                    
+
+        elif direction=="living room":
+            if "sandwich" in items:
+                print "You sit down on the couch with your sandwich."
+                while tv==off:
+                    action=raw_input("What would you like to do?")
+                    if "remote" in action:
+                        tv=on
+                        print "..."
+                        game=win
+                        place=dead
+            else:
+                print "..."
+                
+        elif direction=="north":
+            if "clean hands" in items:
+                print "..."
+                
+                else:
+                    print "You forgot to wash your hands after wiping your butt. You're a nasty creature.  A deep sense of regret fills you as you realize that your hygiene habits are repulsive.  You spend the rest of the day wondering how you came to be so nasty."
+                    game=lose
+                    place=dead
+
+            else:
+                print "..."
+
+        elif direction=="look":
+            print "You are in the bathroom. The toilet is to your immediate left. In front of you is a sink for washing your hands. Below the sink is a cabinet for storing extra toilet paper."
+
+        elif "use" in direction:
+            if "toilet paper" in items:
+            print "..."
+
+        elif direction=="commands":
+            print "type the room you would like to enter to navigate,type the command use followed by the item name to use an item, type the command inventory to look at the items in your posession, type the command look to look around you, type the command search followed by a target to search for people or items, type the command commands to repeat these directions"
+
+
+        elif direction=="inventory":
+            print items
+
+        elif "search" in direction:
+            if "cabinet" 
+            print "Let's not search that now."
+
+while game==lose:
+    print "Thank you for playing!"
+    game=99
+    raw_input ("Press enter to exit the program")
+
+while game==win:
+    print "Thank you for playing!"
+    game=99
+    raw_input ("Press enter to exit the program")
+    
