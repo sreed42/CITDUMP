@@ -36,7 +36,7 @@ def choosePath():
             print("You choose the hammer. You can't see but you do have a weapon.")
 
         else:
-            print("Your a rebel you take both and continue on your journey.")
+            print("You're a rebel you take both and continue on your journey.")
 
     elif door == "2":
         print("You chose door #2. You walk in and see a clown standing in the corner.")
