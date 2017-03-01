@@ -1,5 +1,6 @@
 # This is the new main game file.
 
+from player import Player
 
 def play():
     inventory = [Rock(), Blunt_Sword(), 'Pennies(2)', 'Moldy Bread']
@@ -15,25 +16,12 @@ def play():
         elif action_input in ['w', 'W']:
             print("Go West young man!")
         elif action_input in ['i', 'I']:
-            print("Inventory: ")
-            for item in inventory:
-                print('* ' + str(item))
+            player.print_inventory()
         else:
             print("Invalid option!")
 
 def get_player_command():
     return input('Action (N, S, E, W, I: ')
 
-def strongest_weapon(inventory):
-    max_damage = 0
-    best_weapon = None
-    for item in inventory:
-        try:
-            if item.damage > max_damage:
-                best_weapon = item
-                max_damage = item.damage
-        except AttributeError:
-            pass
-    return best_weapon
 
 play()
