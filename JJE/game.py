@@ -21,3 +21,4 @@ def play():
 
 def get_player_command():
     return input('Action: ')
+play()
