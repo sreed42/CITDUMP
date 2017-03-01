@@ -19,7 +19,7 @@ class Blunt_Sword:
 
 class Pistol:
     def __init__(self):
-        self.name "9mm Pistol"
+        self.name = "9mm Pistol"
         self.description = "Bang bang!"
         self.damage = 20
 
