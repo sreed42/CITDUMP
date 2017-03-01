@@ -1,6 +1,33 @@
 # This is the new main game file.
+class Rock:
+    def __init__(self):
+        self.name = "Rock"
+        self.description = "I guess this is a weapon. " \
+                "About the size of your hand."
+        self.damage = 1
+    def __str__(self):
+        return self.name
+
+class Blunt_Sword:
+    def __init__(self):
+        self.name = "Blunt Sword"
+        self.description = "More useful as a club than a cutting tool."
+        self.damage = 5
+
+    def __str__(self):
+        return self.name
+
+class Pistol:
+    def __init__(self):
+        self.name "9mm Pistol"
+        self.description = "Bang bang!"
+        self.damage = 20
+
+    def __str__(self):
+        return self.name
+
 def play():
-    inventory = ['Blunt Sword', 'Pennies(2)', 'Moldy Bread']
+    inventory = [Blunt_Sword(), 'Pennies(2)', 'Moldy Bread']
     print("Escape from the abandoned mansion!")
     while True:
         action_input = get_player_command()
@@ -20,6 +47,6 @@ def play():
             print("Invalid option!")
 
 def get_player_command():
-    return input('Action: ')
+    return input('Action (N, S, E, W, I: ')
 
 play()
