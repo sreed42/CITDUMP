@@ -1,3 +1,5 @@
+#items for the JJE game
+
 class Weapon:
     def __init__(self):
         raise NotImplementedError("Do not create raw Weapon objects.")
