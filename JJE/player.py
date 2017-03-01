@@ -19,7 +19,7 @@ class Player:
     def strongest_weapon(self):
         max_damage = 0
         best_weapon = None
-        for item in inventory:
+        for item in self.inventory:
             try:
                 if item.damage > max_damage:
                     best_weapon = item
