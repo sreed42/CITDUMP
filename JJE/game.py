@@ -1,5 +1,8 @@
 # This is the new main game file.
 class Weapon:
+    def __init__(self):
+        raise NotImplementedError("Do not create raw Weapon objects.")
+
     def __str__(self):
         return self.name
 
