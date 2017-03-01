@@ -3,7 +3,6 @@
 from player import Player
 
 def play():
-    inventory = [Rock(), Blunt_Sword(), 'Pennies(2)', 'Moldy Bread']
     print("Escape from the abandoned mansion!")
     player = Player()
     while True:
