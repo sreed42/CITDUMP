@@ -56,7 +56,7 @@ class VictoryTile(MapTile):
 world_map = [
     [None, VictoryTile(1, 0), None],
     [None, EnemyTile(1, 1), None],
-    [EnemyTile(0, 2), StartTile(1, 2), EnemyTile(2, 2)]
+    [EnemyTile(0, 2), StartTile(1, 2), EnemyTile(2, 2)],
     [None, EnemyTile(1, 3), None]
 ]
 
