@@ -31,3 +31,4 @@ class Mummy(Enemy):
         self.name = "Mummy"
         self.hp = 80
         self.damage = 15
+        
