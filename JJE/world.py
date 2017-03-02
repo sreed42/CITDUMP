@@ -36,6 +36,13 @@ class EnemyTile(MapTile):
             
         super().__init__(x, y)
 
+    def intro_text(self):
+        if self.enemy.is_alive():
+            return "A {} awaits!".format(self.enemy.name)
+        else:
+            return "You've defeated the {}.".format(self.enemy.name)
+
+
 class VictoryTile(MapTile):
     def intro_text(self):
         return """
