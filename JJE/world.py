@@ -51,10 +51,10 @@ class VictoryTile(MapTile):
         """
 
 world_map = [
-    [None,VictoryTile(1,0),None],
-    [None,BoringTile(1,1),None],
-    [BoringTile(0,2),StartTile(1,2),BoringTile(2,2)]
-    [None,BoringTile(1,3),None]
+    [None, VictoryTile(1, 0), None],
+    [None, EnemyTile(1, 1), None],
+    [EnemyTile(0, 2), StartTile(1, 2), EnemyTile(2, 2)]
+    [None, EnemyTile(1, 3), None]
 ]
 
 def tile_at(x,y):
