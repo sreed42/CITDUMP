@@ -22,6 +22,20 @@ class BoringTile(MapTile):
         Not much is happening here.
         """
 
+class EnemyTile(MapTile):
+    def __init__(self, x, y):
+        r = random.random()
+        if r < 0.50:
+            self.enemy = enemies.GiantSpider()
+        elif r < 0.80:
+            self.enemy = enemies.Lich()
+        elif r < 0.95:
+            self.enemy = enemies.BatColony()
+        else:
+            self.enemy = enemies.Mummy()
+            
+        super().__init__(x, y)
+
 class VictoryTile(MapTile):
     def intro_text(self):
         return """
