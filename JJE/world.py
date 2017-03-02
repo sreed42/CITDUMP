@@ -1,5 +1,7 @@
 #Welcome to the world as defined by JJE.
 import random
+import enemies
+
 
 class MapTile:
     def __init__(self, x, y):
