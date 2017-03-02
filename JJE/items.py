@@ -25,3 +25,26 @@ class Pistol(Weapon):
         self.name = "9mm Pistol"
         self.description = "Bang bang!"
         self.damage = 20
+class Sharp_Sword(Weapon) :
+    def __init__(self):
+        self.name = "Sharp Sword"
+        self.description = "Better for cutting that the Blunt Sword."
+        self.damage = 10
+
+class Spear(Weapon):
+    def __init__(self):
+        self.name = "Spear"
+        self.description = "Poke 'em with the pointy bit."
+        self.damage = 15
+
+class Shotgun(Weapon):
+    def __init__(self):
+        self.name = "Shotgun"
+        self.description = "Blow them away!"
+        self.damage = 25
+
+class Knife(Weapon):
+    def __init__(self):
+        self.name = "Knife"
+        self.description = "Better than the rock."
+        self.damage = 7
