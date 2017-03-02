@@ -12,7 +12,7 @@ class MapTile:
         raise NotImplementedError("Create a subclass!!")
 
 class StartTile:
-    def intro_text(self):
+    def intro_text(self, x, y):
         return """
         You are locked in an abandoned mansion.
         There are a few paths to travel.
