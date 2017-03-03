@@ -35,6 +35,13 @@ class Player:
         best_weapon = self.strongest_weapon()
         print("Your strongest weapon is your {}".format(best_weapon))
 
+    def heal(self):
+        consumables = [item for item in self.inventory
+                       if isinstance(item, items.Consumable)]
+        if consumables == []:
+            print("You have no items that can heal you.")
+            return
+
     def strongest_weapon(self):
         max_damage = 0
         best_weapon = None
