@@ -46,3 +46,14 @@ class Player:
                 pass
 
         return best_weapon
+
+    def attack(self):
+        strongest_weapon = self.strongest_weapon()
+        room = world.tile_at(self.x, self.y)
+        enemy = room.enemy
+        print("You use {} against {}!".format(strongest_weapon.name, enemy.name))
+        enemy.hp -= strongest_weapon.damage
+        if not enemy.is_alive():
+            print("You killed {}!".format(enemy.name))
+        else:
+            print("{} HP is {}.".format(enemy.name, enemy.hp))
