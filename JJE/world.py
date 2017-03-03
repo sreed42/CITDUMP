@@ -11,6 +11,9 @@ class MapTile:
     def intro_text(self):
         raise NotImplementedError("Create a subclass!!")
 
+    def modify_player(self, player):
+        pass
+
 class StartTile(MapTile):
     def intro_text(Self):
         return """
@@ -49,7 +52,7 @@ class EnemyTile(MapTile):
         if self.enemy.is_alive():
             player.hp = player.hp - self.enemy.damage
             print("Enemy does {} damage. You have {} HP left.".format(self.enemy.damage, player.hp))
-        
+
 
 class VictoryTile(MapTile):
     def intro_text(self):
