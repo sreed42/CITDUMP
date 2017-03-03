@@ -33,20 +33,27 @@ class EnemyTile(MapTile):
         r = random.random()
         if r < 0.50:
             self.enemy = enemies.GiantSpider()
+            self.alive_text = "A giant spider falls from the ceiling in front of you."
+            self.dead_text = "As the spider dies, it curls up and flips to its back."
         elif r < 0.80:
             self.enemy = enemies.Lich()
+            self.alive_text = "A Lich appears before you."
+            self.dead_text = "The Lich vanishes in a flash of light."
         elif r < 0.95:
             self.enemy = enemies.BatColony()
+            self.alive_text = "As you enter the area a black mass flies towards you." \
+                              "Suddenly you are engulfed by a swarm of bats!"
+            self.dead_text = "Hundreds of dead bats now litter the ground."
         else:
             self.enemy = enemies.Mummy()
+            self.alive_text = "A shambling horror approaches."
+            self.dead_text = "The Mumy vanishes and all that is left are rotten bandages on the ground."
             
         super().__init__(x, y)
 
     def intro_text(self):
-        if self.enemy.is_alive():
-            return "A {} awaits!".format(self.enemy.name)
-        else:
-            return "You've defeated the {}.".format(self.enemy.name)
+        text = self.alive_text if self.enemy.is_alive() else self.dead_text
+        return text
 
     def modify_player(self, player):
         if self.enemy.is_alive():
