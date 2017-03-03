@@ -49,3 +49,15 @@ class Knife(Weapon):
         self.name = "Knife"
         self.description = "Better than the rock."
         self.damage = 7
+
+class Consumable:
+    def __init__(self):
+        raise NotImplementedError("Do not create raw Consumable objects!")
+
+    def __str__(self):
+        return "{} (+{} HP)".format(self.name, self,healing_value)
+
+class Moldy_Bread(Consumable):
+    def __init__(self):
+        self.name = "Moldy Bread"
+        self.healing_value = 10
