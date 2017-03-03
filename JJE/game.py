@@ -21,11 +21,13 @@ def play():
             player.move_west()
         elif action_input in ['i', 'I']:
             player.print_inventory()
+        elif action_input in ['a', 'A']:
+            player.attack()
         else:
             print("Invalid option!")
 
 def get_player_command():
-    return input('Action (N, S, E, W, I: ')
+    return input('Action (N, S, E, W, I, A: ')
 
 
 play()
