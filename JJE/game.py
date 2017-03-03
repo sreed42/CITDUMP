@@ -30,7 +30,7 @@ def play():
             print("Invalid option!")
 
 def get_player_command():
-    return input('Action (N, S, E, W, I, A: ')
+    return input('Action (N, S, E, W, I, A, H: ')
 
 
 play()
