@@ -41,6 +41,9 @@ class Player:
         if consumables == []:
             print("You have no items that can heal you.")
             return
+        for i, item in enumerate(consumables, 1):
+            print("Choose an item to use to heal: ")
+            print("{}. {}".format(i, item))
 
     def strongest_weapon(self):
         max_damage = 0
