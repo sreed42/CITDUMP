@@ -45,6 +45,11 @@ class EnemyTile(MapTile):
         else:
             return "You've defeated the {}.".format(self.enemy.name)
 
+    def modify_player(self, player):
+        if self.enemy.is_alive():
+            player.hp = player.hp - self.enemy.damage
+            print("Enemy does {} damage. You have {} HP left.".format(self.enemy.damage, player.hp))
+        
 
 class VictoryTile(MapTile):
     def intro_text(self):
