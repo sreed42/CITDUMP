@@ -10,6 +10,7 @@ def play():
     while True:
         room = world.tile_at(player.x, player.y)
         print(room.intro_text())
+        room.modify_player(player)
         action_input = get_player_command()
         if action_input in ['n', 'N']:
             player.move_north()
