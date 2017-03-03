@@ -7,7 +7,7 @@ class Player:
         self.inventory = [items.Rock(),
                           items.Blunt_Sword(),
                           'Pennies(2)',
-                          'Moldy Bread']
+                          items.Moldy_Bread()]
         self.x = 1
         self.y = 2
         self.hp = 100
