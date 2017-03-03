@@ -25,6 +25,7 @@ class Pistol(Weapon):
         self.name = "9mm Pistol"
         self.description = "Bang bang!"
         self.damage = 20
+
 class Sharp_Sword(Weapon) :
     def __init__(self):
         self.name = "Sharp Sword"
