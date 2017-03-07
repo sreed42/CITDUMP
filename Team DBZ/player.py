@@ -1,4 +1,6 @@
-# This module handle the player attributes and actions.
+# Team DBZ
+# Player.py holds all information pertaining to the player. This includes attributes such as health and damage(attack power) 
+# as well as actions and capabilities such as movement, checking inventory and trading.
 
 import items
 import world
