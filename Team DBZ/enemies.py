@@ -43,9 +43,55 @@ class RockMonster(Enemy):
         self.damage = 15
 
 
+class EvilSpock(Enemy):
+    def __init__(self):
+        super().__init__()
+        self.name = "EvilSpock"
+        self.description = "Evil version of Spock"
+        self.hp = 30
+        self.damage = 10
+
+
+class Magneto(Enemy):
+    def __init__(self):
+        super().__init__()
+        self.name = "Magneto"
+        self.description = "A man that controls metal with this hands"
+        self.hp = 30
+        self.damage = 10
+
+
+class Joker(Enemy):
+    def __init__(self):
+        super().__init__()
+        self.name = "Joker"
+        self.description = "A criminally insane villain "
+        self.hp = 100
+        self.damage = 4
+
+
+class WarMachine(Enemy):
+    def __init__(self):
+        super().__init__()
+        self.name = "War Machine"
+        self.decscription = "The sidekick of Iron Man"
+        self.hp = 80
+        self.damage = 15
+
+
 class Seth(Enemy):
     def __init__(self):
         super().__init__()
         self.name = "Seth Reed"
+        self.description = "a professor of CIT"
         self.hp = 200
-        self.damage = 20
+        self.damage = .5
+
+
+class Megatron(Enemy):
+    def __init__(self):
+        super().__init__()
+        self.name = "Megatron"
+        self.descripton = "evil ruler of cybertron"
+        self.hp = 100
+        self.damage = 10
