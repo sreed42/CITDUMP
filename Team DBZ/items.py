@@ -1,3 +1,8 @@
+# Team DBZ
+# Items.py holds all the code for the various items within the game 
+# which includes weapons, currency and consumables such as food and health potions.
+
+
 class Weapon:
     def __init__(self):
         self.name = None
