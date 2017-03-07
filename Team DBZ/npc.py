@@ -1,3 +1,8 @@
+# Team DBZ
+# Npc.py holds the code that determines which npcs the player will encounter 
+# throughout the game as well as what items they will drop/trade.
+
+
 import items
 
 
