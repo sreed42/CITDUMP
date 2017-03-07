@@ -1,3 +1,7 @@
+# Team DBZ
+# Enemies.py holds the information for all enemies encountered in the game 
+# which includes attributes such as HP and damage(attack power).
+
 class Enemy:
     def __init__(self):
         self.hp = None
