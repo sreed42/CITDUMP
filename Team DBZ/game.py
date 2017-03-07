@@ -1,4 +1,5 @@
-# Team DBZ Main Game File
+# Team DBZ
+# Game.py holds the information for executing the game itself and references information held in the player and world modules
 
 from player import Player
 from collections import OrderedDict
