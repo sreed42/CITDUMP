@@ -1,7 +1,6 @@
 # Team DBZ
 # Player.py holds all information pertaining to the player. This includes attributes such as health and damage(attack power) 
 # as well as actions and capabilities such as movement, checking inventory and trading.
-
 import items
 import world
 
@@ -10,7 +9,7 @@ class Player:
     def __init__(self):
         self.inventory = [items.Rock(),
                           items.Dagger(),
-                          items.StaleBread]
+                          items.StaleBread()]
         self.x = world.start_tile_location[0]
         self.y = world.start_tile_location[1]
         self.hp = 100
