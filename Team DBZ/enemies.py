@@ -2,6 +2,7 @@
 # Enemies.py holds the information for all enemies encountered in the game 
 # which includes attributes such as HP and damage(attack power).
 
+
 class Enemy:
     def __init__(self):
         self.hp = None
@@ -17,7 +18,6 @@ class Enemy:
 
 class GiantSpider(Enemy):
     def __init__(self):
-        super().__init__()
         self.name = "Giant Spider"
         self.hp = 10
         self.damage = 2
@@ -25,7 +25,6 @@ class GiantSpider(Enemy):
 
 class Ogre(Enemy):
     def __init__(self):
-        super().__init__()
         self.name = "Ogre"
         self.hp = 30
         self.damage = 10
@@ -33,7 +32,6 @@ class Ogre(Enemy):
 
 class BatColony(Enemy):
     def __init__(self):
-        super().__init__()
         self.name = "Colony of bats"
         self.hp = 100
         self.damage = 4
@@ -41,7 +39,6 @@ class BatColony(Enemy):
 
 class RockMonster(Enemy):
     def __init__(self):
-        super().__init__()
         self.name = "Rock Monster"
         self.hp = 80
         self.damage = 15
@@ -49,7 +46,6 @@ class RockMonster(Enemy):
 
 class EvilSpock(Enemy):
     def __init__(self):
-        super().__init__()
         self.name = "EvilSpock"
         self.description = "Evil version of Spock"
         self.hp = 30
@@ -58,7 +54,6 @@ class EvilSpock(Enemy):
 
 class Magneto(Enemy):
     def __init__(self):
-        super().__init__()
         self.name = "Magneto"
         self.description = "A man that controls metal with this hands"
         self.hp = 30
@@ -67,7 +62,6 @@ class Magneto(Enemy):
 
 class Joker(Enemy):
     def __init__(self):
-        super().__init__()
         self.name = "Joker"
         self.description = "A criminally insane villain "
         self.hp = 100
@@ -76,7 +70,6 @@ class Joker(Enemy):
 
 class WarMachine(Enemy):
     def __init__(self):
-        super().__init__()
         self.name = "War Machine"
         self.decscription = "The sidekick of Iron Man"
         self.hp = 80
@@ -85,7 +78,6 @@ class WarMachine(Enemy):
 
 class Seth(Enemy):
     def __init__(self):
-        super().__init__()
         self.name = "Seth Reed"
         self.description = "a professor of CIT"
         self.hp = 200
@@ -94,7 +86,6 @@ class Seth(Enemy):
 
 class Megatron(Enemy):
     def __init__(self):
-        super().__init__()
         self.name = "Megatron"
         self.descripton = "evil ruler of cybertron"
         self.hp = 100
