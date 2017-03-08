@@ -217,6 +217,9 @@ def parse_world_dsl():
         dsl_cells = [c for c in dsl_cells if c]
         for x, dsl_cell in enumerate(dsl_cells):
             tile_type = tile_type_dict[dsl_cell]
+            if tile_type == StartTile:
+                global start_tile_location
+                start_tile_location = x, y
             row.append(tile_type(x, y) if tile_type else None)
 
         world_map.append(row)
