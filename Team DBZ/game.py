@@ -1,6 +1,7 @@
 # Team DBZ
 # Game.py holds the information for executing the game itself and references information held in the player and world modules
 
+
 from player import Player
 from collections import OrderedDict
 import world
@@ -57,9 +58,9 @@ def get_available_actions(room, player):
 
 
 def action_adder(action_dict, hotkey, action, name):
-    action_dict[hotkey.lower()] = action
-    action_dict[hotkey.upper()] = action
-    print("{}: {}".format(hotkey, name))
+        action_dict[hotkey.lower()] = action
+        action_dict[hotkey.upper()] = action
+        print("{}: {}".format(hotkey, name))
 
 
 def get_player_command():
