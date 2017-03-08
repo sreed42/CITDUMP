@@ -1,3 +1,4 @@
+#ERICK MCCOLLUM
 class salesperson():
     name = ''
     idnum = 0
