@@ -31,3 +31,21 @@ class Mummy(Enemy):
         self.name = "Mummy"
         self.hp = 80
         self.damage = 15
+
+class ViciousDog(Enemy):
+    def __init__(self):
+        self.name = "Vicious Dog"
+        self.hp = 75
+        self.damage = 15
+
+class ScaryClown(Enemy):
+    def __init__(self):
+        self.name = "Scary Clown"
+        self.hp = 100
+        self.damage = 25
+
+class JumboRat(Enemy):
+    def __init__(self):
+        self.name = "Jumbo Rat"
+        self.hp = 20
+        self.damage = 5
