@@ -1,5 +1,5 @@
 # Team DBZ
-# World.py holds all the code that determines where the player is in the world 
+# World.py holds all the code that determines where the player is in the world
 # as well as which enemies and items can be found there.
 
 
