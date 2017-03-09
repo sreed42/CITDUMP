@@ -5,7 +5,6 @@
 from player import Player
 from collections import OrderedDict
 import world
-import player
 
 
 def play():
@@ -54,7 +53,7 @@ def get_available_actions(room, player):
             action_adder(actions, 'w', player.move_west, "Go West")
         if player.hp < 100:
             action_adder(actions, 'h', player.heal, "Heal")
-        return actions
+    return actions
 
 
 def action_adder(action_dict, hotkey, action, name):
