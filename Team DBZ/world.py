@@ -232,4 +232,3 @@ tile_type_dict = {
     "FG": FindGoldTile,
     "TT": TraderTile,
     '  ': None}
-
