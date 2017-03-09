@@ -1,6 +1,7 @@
 # Team DBZ
 # Player.py holds all information pertaining to the player. This includes attributes such as health and damage(attack power) 
 # as well as actions and capabilities such as movement, checking inventory and trading.
+
 import items
 import world
 
@@ -77,11 +78,11 @@ class Player:
         return best_weapon
 
     def attack(self):
-        most_powerful_weapon = self.most_powerful_weapon()
+        best_weapon = self.most_powerful_weapon()
         room = world.tile_at(self.x, self.y)
         enemy = room.enemy
-        print("You use {} against {}!".format(most_powerful_weapon.name, enemy.name))
-        enemy.hp -= most_powerful_weapon
+        print("You use {} against {}!".format(best_weapon.name, enemy.name))
+        enemy.hp -= best_weapon.damage
         if not enemy.is_alive():
             print("You killed {}!".format(enemy.name))
         else:
