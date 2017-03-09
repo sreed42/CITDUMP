@@ -67,8 +67,8 @@ def get_player_command():
 
 
 play()
-while True:
-    room = world.tile_at(player.x, player.y)
-    print(room.intro_text())
-    room.modify_player(Player)
-    action_input = get_player_command
+#while True:
+#   room = world.tile_at(player.x, player.y)
+#    print(room.intro_text())
+#    room.modify_player(Player)
+#    action_input = get_player_command
