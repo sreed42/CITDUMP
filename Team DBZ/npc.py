@@ -1,8 +1,3 @@
-# Team DBZ
-# Npc.py holds the code that determines which npcs the player will encounter 
-# throughout the game as well as what items they will drop/trade.
-
-
 import items
 
 
@@ -17,11 +12,11 @@ class NonPlayableCharacter:
 
 class Trader(NonPlayableCharacter):
     def __init__(self):
-        super().__init__()
         self.name = "Trader"
         self.gold = 100
         self.inventory = [items.StaleBread(),
                           items.StaleBread(),
                           items.HealthPotionMinor(),
                           items.HealthPotion(),
-                          items.HealthPotionMajor()]
+                          items.HealthPotionMajor(),
+                          items.Joyeuse()]
