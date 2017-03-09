@@ -1,5 +1,10 @@
+# Enemies list for JJE
+# Here you will find details on all of the enemies such as name, health, and damage they cause
+
 class Enemy:
     def __init__(self):
+        self.hp = None
+        self.name = None
         raise NotImplementedError("Do not create raw Enemy objets.")
 
     def __str__(self):
@@ -8,29 +13,18 @@ class Enemy:
     def is_alive(self):
         return self.hp > 0
 
-class GiantSpider(Enemy):
-    def __init__(self):
-        self.name = "Giant Spider"
-        self.hp = 10
-        self.damage = 2
-
 class Lich(Enemy):
     def __init__(self):
         self.name = "Lich"
+        self.description = "An undead creature"
         self.hp = 30
         self.damage = 10
-
-class BatColony(Enemy):
-    def __init__(self):
-        self.name = "Colony of Bats"
-        self.hp = 100
-        self.damage = 4
 
 class Mummy(Enemy):
     def __init__(self):
         self.name = "Mummy"
         self.hp = 80
-        self.damage = 15
+        self.damage = 13
 
 class ViciousDog(Enemy):
     def __init__(self):
@@ -42,7 +36,7 @@ class ScaryClown(Enemy):
     def __init__(self):
         self.name = "Scary Clown"
         self.hp = 100
-        self.damage = 25
+        self.damage = 7
 
 class JumboRat(Enemy):
     def __init__(self):
