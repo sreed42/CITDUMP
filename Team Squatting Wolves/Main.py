@@ -1,3 +1,4 @@
+#Erick
 class salesperson():
     name = ''
     idnum = 0
@@ -27,6 +28,7 @@ class salesperson():
     def getAge(self):
         return self.age
 
+#Erick
 class purchaseOrder():
     # Employee Information
     empName = ''
@@ -100,6 +102,7 @@ class purchaseOrder():
               "COLOR: " + str(self.carColor), "\n"
               "PRICE: " + str(self.carPrice))
 
+#Kyle
 class customer:
     FirstName = ''
     LastName = ''
@@ -129,6 +132,7 @@ class customer:
     def getMaritalStatus(self):
         return self.MaritalStatus
 
+#Kyle
 class vehicle:
     ID = 0
     Color = ''
@@ -224,6 +228,7 @@ while count == 1:
         except:
             print("Please enter a number 1 through 4")
 
+#Erick
     if choice == 1:
         custFirstName = str(input("What is the customer's first name?"))
         custLastName = str(input("What is the customer's last name?"))
@@ -361,6 +366,7 @@ while count == 1:
               "PRESS ENTER TO CONTINUE..."
               "\n")
 
+#Kyle
     if choice == 2:
         salesCount = 1
         while salesCount == 1:
@@ -404,6 +410,7 @@ while count == 1:
             else:
                 print("Please enter a number 1 through 3.")
 
+#Kyle 
     elif choice == 3:
         vehCount = 1
         while vehCount == 1:
@@ -534,6 +541,7 @@ while count == 1:
                 print("Price: $15,987")
                 vehCount = 0
 
+#Erick
     elif choice == 4:
         count = 0
 
