@@ -1,3 +1,5 @@
+#Richie Marier
+
 class customer(object):  # creating customer class
 
     def __init__(self, custFirstName, custLastName, custGender, custAge, custMarital):  # initializes variables
