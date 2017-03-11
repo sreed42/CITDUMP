@@ -24,7 +24,7 @@ class Mummy(Enemy):
     def __init__(self):
         self.name = "Mummy"
         self.hp = 80
-        self.damage = 15
+        self.damage = 13
 
 class ViciousDog(Enemy):
     def __init__(self):
@@ -36,7 +36,7 @@ class ScaryClown(Enemy):
     def __init__(self):
         self.name = "Scary Clown"
         self.hp = 100
-        self.damage = 25
+        self.damage = 7
 
 class JumboRat(Enemy):
     def __init__(self):
