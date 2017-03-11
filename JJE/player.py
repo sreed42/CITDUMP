@@ -1,4 +1,5 @@
-#This is the code to handle the player
+# This is the code to handle the player.
+# This has all the information about the players and their actions
 
 import items
 import world
@@ -6,13 +7,12 @@ import world
 class Player:
     def __init__(self):
         self.inventory = [items.Rock(),
-                          items.Dagger(),
+                          items.Sharp_Sword(),
                           items.MoldyBread()]
         self.x = world.start_tile_location[0]
         self.y = world.start_tile_location[1]
         self.hp = 100
         self.pennies = 5
-        self.healingpotion = 3
         self.victory = False
 
     def is_alive(self):
@@ -39,36 +39,12 @@ class Player:
         for item in self.inventory:
             print('* ' + str(item))
         print("Pennies: {}".format(self.pennies))
-        best_weapon = self.most_powerful_weapon()
-        print("Your best weapon is your {}".format(best_weapon))
-
-    def most_powerful_weapon(inventory):
-        max_dmage = 0
-        best_weapon = None
-        for item in inventory:
-            try:
-                if item.damage > max_damage:
-                    best_weapon = item
-                    max_damage = item.damage
-            except AttributeError
-                pass
-
-            return best_weapon
-
-    def attack(self):
-        best_weapon = self.most_powerful_weapon()
-        room = world.tile_at(self.x, self.y)
-        enemy = room.enemy
-        print("You use {} against {}!".format(best_weapon.name, enemy.name))
-        enemy.hp -= best_weapon.damage
-        if not enemy.is_alive():
-            print("You killed {}!".format(enemy.name))
-        else:
-            print("{} HP is {}.".format(enemy.name, enemy.hp))
+        best_weapon = self.strongest_weapon()
+        print("Your strongest weapon is your {}".format(best_weapon))
 
     def heal(self):
         consumables = [item for item in self.inventory
-                       if isinstance(item, items.Consumables)]
+                       if isinstance(item, items.Consumable)]
         if not consumables:
             print("You don't have any items to heal you!")
             return
@@ -88,6 +64,33 @@ class Player:
             except (ValueError, IndexError):
                 print("Invalid choice, try again.")
 
+    def strongest_weapon(self):
+        max_damage = 0
+        best_weapon = None
+        for item in self.inventory:
+            try:
+                if item.damage > max_damage:
+                    best_weapon = item
+                    max_damage = item.damage
+            except AttributeError:
+                pass
+
+        return best_weapon
+
+    def attack(self):
+        best_weapon = self.strongest_weapon()
+        room = world.tile_at(self.x, self.y)
+        enemy = room.enemy
+        print("You use {} against {}!".format(best_weapon.name, enemy.name))
+        enemy.hp -= best_weapon.damage
+        if not enemy.is_alive():
+            print("You killed {}!".format(enemy.name))
+        else:
+            print("{} HP is {}!.".format(enemy.name, enemy.hp))
+
     def trade(self):
         room = world.tile_at(self.x, self.y)
         room.check_if_trade(self)
+
+    def getx(self):
+        return(self.x)
