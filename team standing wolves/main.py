@@ -21,7 +21,7 @@ class salesperson(object):  # creating salesperson class
     def getAge(self):
         return self.age
 
-#Richie
+#Jared
 class customer(object):  # creating customer class
 
     def __init__(self, custFirstName, custLastName, custGender, custAge, custMarital):
@@ -46,7 +46,7 @@ class customer(object):  # creating customer class
     def getMaritalStatus(self):
         return self.custMarital
 
-#Jared
+#Richie
 class vehicle(object):  # creating vehicle class
 
     def __init__(self, id, color, type, condition, year, price):
