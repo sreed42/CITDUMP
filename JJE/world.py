@@ -1,5 +1,5 @@
-#Welcome to the world as defined by JJE.
-#This determines where the player is on the map.
+# Welcome to the world as defined by JJE.
+# This determines where the player is in the world and the enemies and items
 
 import random
 import enemies
@@ -11,51 +11,55 @@ class MapTile:
         self.y = y
 
     def intro_text(self):
-        raise NotImplementedError("Create a subclass instead!")
+        raise NotImplementedError("Create a subclass!!")
 
     def modify_player(self, player):
         pass
 
 class StartTile(MapTile):
     def intro_text(self):
-        if __name__ == '__main__':
-            if __name__ == '__main__':
-                return """
-                You are locked in an abandoned mansion.
-                There are a few paths to travel.
-                Can you survive!
-                """
+       return """You are locked in an abandoned mansion.
+       There are a few paths to travel.
+       Can you survive?"""
 
 class BoringTile(MapTile):
     def intro_text(self):
         return """
-               Not much is happening here.
-               """
+        Not much is happening here.
+        """
 
 class EnemyTile(MapTile):
     def __init__(self, x, y):
         r = random.random()
+        if r < 0.35:
+            self.enemy = enemies.Lich()
+            self.alive_text = "A deadly Lich lurks in the darkness." \
+                              "Watch out!"
+            self.dead_text = "The Lich lies lifeless in front of you"
+
+        if r < 0.40:
+            self.enemy = enemies.Mummy()
+            self.alive_text = "You hear a strange noise in the distance." \
+                              "A huge mummy comes after you."
+            self.dead_text = "The mummies cloth lies in a pile on the ground."
+
         if r < 0.50:
-            self.enemy = enemies.ScayClown()
-            self.alive_text = "A Scary Clown jumps out the corner " \
+            self.enemy = enemies.ScaryClown()
+            self.alive_text = "A Scary Clown jumps out the corner "\
                               "It's in front of you!"
-            self.dead_text = "The corpse of a dead clown " \
+            self.dead_text = "The corpse of a dead clown "\
                              "rots on the ground."
         elif r < 0.80:
             self.enemy = enemies.ViciousDog()
             self.alive_text = "A vicious dog is blocking your path!"
             self.dead_text = "A dead dog reminds you your alive."
 
-        elif r < 0.95:
-            self.enemy = enemies.BatColony()
-            self.alive_text = "You hear a squeaking noise growling louder " \
-                              "...hundreds of bats swarm around you!"
-            self.dead_text = "The bats lay scattered on the ground."
         else:
             self.enemy = enemies.JumboRat()
-            self.alive_text = "You've awaken a Jumbo Rat."
+            self.alive_text = "You've awaken a Jumbo Rat!"
             self.dead_text = "The rat scattered in fear."
-        super().__init__(x, y)
+
+        super(). __init__(x,y)
 
     def intro_text(self):
         text = self.alive_text if self.enemy.is_alive() else self.dead_text
@@ -64,29 +68,35 @@ class EnemyTile(MapTile):
     def modify_player(self, player):
         if self.enemy.is_alive():
             player.hp = player.hp - self.enemy.damage
-            print("Enemy does {} damage. You have {} HP remaining.".
+            print("Enemy does {} damage. You have {} HP remaining!".
                   format(self.enemy.damage, player.hp))
 
-class VictoryTile(MapTile):
+class FindPenniesTile(MapTile):
+    def __init__(self, x, y):
+        self.pennies = random.randint(1, 50)
+        self.pennies_claimed = False
+        super().__init__(x, y)
+
     def modify_player(self, player):
-        player.victory = True
+        if not self.pennies_claimed:
+            self.pennies_claimed = True
+            player.pennies = player.pennies + self.pennies
+            print("+{} pennies added.".format(self.pennies))
 
     def intro_text(self):
-        return """
-              Escape is in you grasp!
-              You Survived!!!
-               """
+        if self.pennies_claimed:
+            return """
+            Another unremarkable part of the mansion. You must press onwards.
+            """
+        else:
+            return """
+            Someone dropped some pennies. You pick it up.
+            """
 
 class TraderTile(MapTile):
     def __init__(self, x, y):
         self.trader = npc.Trader()
         super().__init__(x, y)
-
-    def intro_text(self):
-        return """
-        A creature awaits in the corner.
-        He looks willing to trade.
-        """
 
     def trade(self, buyer, seller):
         for i, item in enumerate(seller.inventory, 1):
@@ -104,8 +114,8 @@ class TraderTile(MapTile):
                     print("Invalid choice!")
 
     def swap(self, seller, buyer, item):
-        if item.value > buyer.gold:
-            print("That's too expensive")
+        if item.value > buyer.pennies:
+            print("That's to expensive!")
             return
         seller.inventory.remove(item)
         buyer.inventory.append(item)
@@ -117,42 +127,32 @@ class TraderTile(MapTile):
         while True:
             print("Would you like to (B)uy, (S)ell, or (Q)uit?")
             user_input = input()
-            if user_input in ['Q', 'q']:
+            if user_input in['Q', 'q']:
                 return
-            elif user_input in ['B', 'b']:
+            elif user_input in['B', 'b']:
                 print("Here's whats available to buy: ")
                 self.trade(buyer=player, seller=self.trader)
-            elif user_input in ['S', 's']:
+            elif user_input in['S', 's']:
                 print("Here's whats available to sell: ")
                 self.trade(buyer=self.trader, seller=player)
             else:
                 print("Invalid choice!")
 
-    def trade(self):
-        room = world.tile_at(self.x, self.y)
-        room.check_if_trade(self)
+    def intro_text(self):
+        return """
+        A creature waits in the corner,
+        he looks willing to trade.
+        """
 
-class FindPenniesTile(MapTile):
-    def __init__(self, x, y):
-        self.pennies = random.randint(1, 50)
-        self.pennies_claimed = False
-        super().__init__(x, y)
-
+class VictoryTile(MapTile):
     def modify_player(self, player):
-        if not self.pennies_claimed:
-            self.pennies_claimed = True
-            player.pennies = player.pennies + self.pennies
-            print("+{} pennies added.".format(self.pennies))
+        player.victory = True
 
     def intro_text(self):
-        if self.pennies_claimed:
-            return """
-            Another unremarkable part of the cave. You must forge onwards.
-            """
-        else:
-            return """
-            Someone dropped some pennies. You pick it up.
-            """
+        return """
+        Escape is in your grasp!
+        You Survived!!!!
+        """
 
 world_dsl = """
 |EN|EN|VT|EN|EN|
@@ -164,13 +164,14 @@ world_dsl = """
 
 world_map = []
 
-def tile_at(x, y):
+def tile_at(x,y):
     if x < 0 or y < 0:
         return None
     try:
         return world_map[y][x]
     except IndexError:
         return None
+
 
 start_tile_location = None
 
@@ -180,13 +181,14 @@ def is_dsl_valid(dsl):
     if dsl.count("|VT|") == 0:
         return False
     lines = dsl.splitlines()
-    lines = [l for l in lines if l]
+    lines =[l for l in lines if l]
     pipe_counts = [line.count("|") for line in lines]
     for count in pipe_counts:
         if count != pipe_counts[0]:
             return False
 
     return True
+
 
 def parse_world_dsl():
     if not is_dsl_valid(world_dsl):
