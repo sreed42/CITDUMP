@@ -1,3 +1,5 @@
+#Richie
+
 class vehicle(object):  # creating vehicle class
 
     def __init__(self, id, color, type, condition, year, price):
