@@ -1,3 +1,5 @@
+#Jared Thompson
+
 class salesperson(object):  # creating salesperson class
 
     def __init__(self, name, idnum, gender, age):
