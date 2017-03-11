@@ -1,4 +1,4 @@
-#Richie Marier
+#Jared Thompson
 
 class customer(object):  # creating customer class
 
