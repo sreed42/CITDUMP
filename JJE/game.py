@@ -6,6 +6,7 @@ from collections import OrderedDict
 import world
 
 
+
 def play():
     print("Escape from the abandoned mansion!")
     world.parse_world_dsl()
