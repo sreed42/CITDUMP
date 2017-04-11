@@ -1,13 +1,15 @@
-from tkinter import *
+import main
+import gi
 
-class Display(Frame):
+gi.require_version('Gtk', '3.0')
+from gi.repository import Gtk
 
-    mGui = Tk()
-    mGui.geometry("500x500-500-300")
-    mGui.title("Haunted Mansion!")
-    mlabel = Label(mGui,text = "You are locked in an abandoned mansion.\n"
-                             "There are a few paths you can travel.\n"
-                             "Can you survive?").pack()
 
-if __name__ == '__main__':
-  Display().mainloop()
+builder = Gtk.Builder()
+builder.add_from_file("MansionGUI.glade")
+#builder.connect_signals(Handler())
+
+window = builder.get_object("applicationwindow1")
+window.show_all()
+
+Gtk.main()
