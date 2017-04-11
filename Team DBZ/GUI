@@ -1,0 +1,35 @@
+# GUI for Team DBZ Text Adventure
+
+from tkinter import *
+from player import Player
+from collections import OrderedDict
+import world
+
+
+class GUIWindow:
+
+    def __init__(self, master):
+        topFrame = Frame(master)
+        topFrame.pack()
+        bottomFrame = Frame(root)
+        bottomFrame.pack(side=BOTTOM)
+
+        self.button_north = Button(topFrame, text="North")
+        self.button_west = Button(topFrame, text="West")
+        self.button_east = Button(topFrame, text="East")
+        self.button_south = Button(bottomFrame, text="South")
+
+
+        self.button_north.grid(row=5, column=5)
+        self.button_west.grid(row=6, column=4)
+        self.button_east.grid(row=6, column=6)
+        self.button_south.grid(row=7, column=5)
+
+
+
+
+root = Tk()
+
+GUI = GUIWindow(root)
+
+root.mainloop()
