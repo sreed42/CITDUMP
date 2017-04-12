@@ -15,25 +15,65 @@ class GUIWindow:
         bottomFrame.pack(side=BOTTOM)
 
         self.textentry = Text(topFrame, width=25, height=10)
-        self.button_north = Button(bottomFrame, text="North")
-        self.button_west = Button(bottomFrame, text="West")
-        self.button_east = Button(bottomFrame, text="East")
-        self.button_south = Button(bottomFrame, text="South")
-        self.button_inventory = Button(bottomFrame, text="Inventory")
-        self.button_heal = Button(bottomFrame, text="Heal")
+        self.button_north = Button(bottomFrame, text="North", command=Player.move_north)
+        self.button_west = Button(bottomFrame, text="West", command=Player.move_west)
+        self.button_east = Button(bottomFrame, text="East", command=Player.move_east)
+        self.button_south = Button(bottomFrame, text="South", command=Player.move_south)
+        self.button_inventory = Button(bottomFrame, text="Inventory", command=Player.print_inventory)
+        self.button_heal = Button(bottomFrame, text="Heal", command=Player.heal)
 
 
-        self.button_north.grid(row=5, column=5)
-        self.button_west.grid(row=6, column=4)
-        self.button_east.grid(row=6, column=6)
-        self.button_south.grid(row=7, column=5)
+        self.button_north.grid(row=6, column=5)
+        self.button_west.grid(row=7, column=4)
+        self.button_east.grid(row=7, column=6)
+        self.button_south.grid(row=8, column=5)
         self.textentry.grid(row=0, column=0)
-        self.button_inventory.grid(row=5, column=3)
-        self.button_heal.grid(row=7, column=3)
+        self.button_inventory.grid(row=6, column=3)
+        self.button_heal.grid(row=8, column=3)
+
+    def play(self):
+        print("Escape from the Cave of Invalid Commands!")
+        world.parse_world_dsl()
+        player = Player()
+        while player.is_alive() and not player.victory:
+            room = world.tile_at(player.x, player.y)
+            print(room.intro_text())
+            room.modify_player(player)
+            if player.is_alive() and not player.victory:
+                choose_action(room, player)
+            elif not player.is_alive():
+                print("Your journey has come to an early end!")
+
+    def choose_action(room, player):
+        action = None
 
 
+    def get_available_actions(room, player):
+        actions = OrderedDict()
+        print("Choose an action: ")
+        if player.inventory:
+            action_adder(actions, 'i', player.print_inventory, "Print Inventory")
+        if isinstance(room, world.TraderTile):
+            action_adder(actions, 't', player.trade, "Trade")
+        if isinstance(room, world.EnemyTile) and room.enemy.is_alive():
+            action_adder(actions, 'a', player.attack, "Attack")
+        else:
+            if world.tile_at(room.x, room.y - 1):
+                action_adder(actions, 'n', player.move_north, "Go North")
+            if world.tile_at(room.x, room.y + 1):
+                action_adder(actions, 's', player.move_south, "Go South")
+            if world.tile_at(room.x + 1, room.y):
+                action_adder(actions, 'e', player.move_east, "Go East")
+            if world.tile_at(room.x - 1, room.y):
+                action_adder(actions, 'w', player.move_west, "Go West")
+            if player.hp < 100:
+                action_adder(actions, 'h', player.heal, "Heal")
+        return actions
 
-
+    def action_adder(action_dict, hotkey, action, name):
+        action_dict[hotkey.lower()] = action
+        action_dict[hotkey.upper()] = action
+        print("{}: {}".format(hotkey, name))
 
 root = Tk()
 
