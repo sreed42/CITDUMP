@@ -5,8 +5,29 @@
 from player import Player
 from collections import OrderedDict
 import world
+import gi
+gi.require_version('Gtk', '3.0')
+from gi.repository import gtk
 
+class handler:
+    def on_window1_destroy(self, object, data=None):
+        print("quit with cancel")
+        gtk.main_quit()
 
+    def on_gtk_quit_activate(self, menuitem, data=None):
+        print("quit from menu")
+        gtk.main_quit()
+
+    def __init__(self):
+        self.gladefile = "MansionGUI.glade"
+        self.builder = gtk.Builder()
+        self.builder.add_from_file(self.gladefile)
+        self.builder.connect_signals(self)
+        self.window = self.builder.get_object("window1")
+        self.window.show()
+
+main = handler()
+gtk.main()
 
 def play():
     print("Escape from the abandoned mansion!")
