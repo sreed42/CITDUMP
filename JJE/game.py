@@ -1,25 +1,11 @@
+#!/usr/bin/env python3
 # Game file for JJE
 # This is how the game functions
 
 from player import Player
 from collections import OrderedDict
 import world
-import subprocess
-import gi
 
-gi.require_version('Gtk', '3.0')
-from gi.repository import Gtk
-
-
-builder = Gtk.Builder()
-builder.add_from_file("MansionGUI.glade")
-#builder.connect_signals(Handler())
-
-
-window = builder.get_object("applicationwindow1")
-window.show_all()
-
-Gtk.main()
 
 
 def play():
