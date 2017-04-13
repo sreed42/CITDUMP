@@ -1,30 +1,29 @@
 import main
 
-from Tkinter import *
-
+from tkinter import *
 
 root = Tk()
-root.title("Escape from Mansion!")
+root.geometry("2000x1000")
+root.title("Escape from Mansion")
+Text = Text(height=50, width=100)
+Text.pack(side=LEFT)
+
+button1 = Button(root, text="North")
+button2 = Button(root, text="South")
+button3 = Button(root, text="East")
+button4 = Button(root, text="West")
+
+button5 = Button(root, text="Print Inventory")
+button6 = Button(root, text="Attack")
+button7 = Button(root, text="Heal")
+
+Text.pack(side=LEFT, expand=1)
+button1.pack(side=RIGHT)
+button2.pack(side=RIGHT)
+button3.pack(side=RIGHT)
+button4.pack(side=RIGHT)
+button5.pack(side=RIGHT)
+button6.pack(side=RIGHT)
+button7.pack(side=RIGHT)
 
 root.mainloop()
-
-NorthButton = Button(root, text="North")
-SouthButton = Button(root, text="South")
-EastButton =  Button(root, text="East")
-WestButton =  Button(root, text="West")
-
-HealButton =  Button(root, text="Heal")
-InventoryButton = Button(root, text="Inventory")
-AttackButton = Button(root, text="Attack")
-
-Text = Entry(root)
-listbox = Listbox(root)
-
-Text.pack()
-NorthButton.pack()
-SouthButton.pack()
-EastButton.pack()
-WestButton.pack()
-HealButton.pack()
-InventoryButton.pack()
-AttackButton.pack()
