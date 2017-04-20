@@ -1,10 +1,8 @@
 # GUI for Team DBZ Text Adventure
 
 from tkinter import *
-from player import Player
-from collections import OrderedDict
-import world
-
+from playergui import *
+import worldgui
 
 class GUIWindow:
 
@@ -13,67 +11,113 @@ class GUIWindow:
         topFrame.pack()
         bottomFrame = Frame(root)
         bottomFrame.pack(side=BOTTOM)
-
-        self.textentry = Text(topFrame, width=25, height=10)
-        self.button_north = Button(bottomFrame, text="North", command=Player.move_north)
-        self.button_west = Button(bottomFrame, text="West", command=Player.move_west)
-        self.button_east = Button(bottomFrame, text="East", command=Player.move_east)
-        self.button_south = Button(bottomFrame, text="South", command=Player.move_south)
-        self.button_inventory = Button(bottomFrame, text="Inventory", command=Player.print_inventory)
-        self.button_heal = Button(bottomFrame, text="Heal", command=Player.heal)
+        worldgui.parse_world_dsl()
+        self.player = Player()
 
 
+        self.text_entry = Text(topFrame, width=80, height=10)
+        self.text_entry.delete("1.0")
+        self.button_north = Button(bottomFrame, text="North", command=self.move_northgui)
+        self.button_west = Button(bottomFrame, text="West", command=self.move_westgui)
+        self.button_east = Button(bottomFrame, text="East", command=self.move_eastgui)
+        self.button_south = Button(bottomFrame, text="South", command=self.move_southgui)
+        self.button_inventory = Button(bottomFrame, text="Inventory", command=self.print_inventorygui)
+        self.button_heal = Button(bottomFrame, text="Heal", command=self.healgui)
+        self.button_attack = Button(bottomFrame, text="Attack", command=self.attackgui)
+
+        self.text_entry.grid(row=0, column=0)
         self.button_north.grid(row=6, column=5)
         self.button_west.grid(row=7, column=4)
         self.button_east.grid(row=7, column=6)
         self.button_south.grid(row=8, column=5)
-        self.textentry.grid(row=0, column=0)
         self.button_inventory.grid(row=6, column=3)
         self.button_heal.grid(row=8, column=3)
+        self.button_attack.grid(row=7, column=3)
+        self.refresh()
 
-    def play(self):
-        print("Escape from the Cave of Invalid Commands!")
-        world.parse_world_dsl()
-        player = Player()
-        while player.is_alive() and not player.victory:
-            room = world.tile_at(player.x, player.y)
-            print(room.intro_text())
-            room.modify_player(player)
-            if player.is_alive() and not player.victory:
-                choose_action(room, player)
-            elif not player.is_alive():
-                print("Your journey has come to an early end!")
-
-    def choose_action(room, player):
-        action = None
-
-
-    def get_available_actions(room, player):
-        actions = OrderedDict()
-        print("Choose an action: ")
-        if player.inventory:
-            action_adder(actions, 'i', player.print_inventory, "Print Inventory")
-        if isinstance(room, world.TraderTile):
-            action_adder(actions, 't', player.trade, "Trade")
-        if isinstance(room, world.EnemyTile) and room.enemy.is_alive():
-            action_adder(actions, 'a', player.attack, "Attack")
+    def move_northgui(self):
+        room = worldgui.tile_at(self.player.x, self.player.y)
+        if worldgui.tile_at(room.x, room.y - 1):
+            self.player.move_north()
         else:
-            if world.tile_at(room.x, room.y - 1):
-                action_adder(actions, 'n', player.move_north, "Go North")
-            if world.tile_at(room.x, room.y + 1):
-                action_adder(actions, 's', player.move_south, "Go South")
-            if world.tile_at(room.x + 1, room.y):
-                action_adder(actions, 'e', player.move_east, "Go East")
-            if world.tile_at(room.x - 1, room.y):
-                action_adder(actions, 'w', player.move_west, "Go West")
-            if player.hp < 100:
-                action_adder(actions, 'h', player.heal, "Heal")
-        return actions
+            Tk.messagebox("Invalid option","You can't go north")
+        self.refresh()
 
-    def action_adder(action_dict, hotkey, action, name):
-        action_dict[hotkey.lower()] = action
-        action_dict[hotkey.upper()] = action
-        print("{}: {}".format(hotkey, name))
+    def move_southgui(self):
+        room = worldgui.tile_at(self.player.x, self.player.y)
+        if worldgui.tile_at(room.x, room.y + 1):
+            self.player.move_south()
+        else:
+            Tk.messagebox("Invalid option","You can't go south.")
+        self.refresh()
+
+    def move_eastgui(self):
+        room = worldgui.tile_at(self.player.x, self.player.y)
+        if worldgui.tile_at(room.x + 1, room.y):
+            self.player.move_east()
+        else:
+            Tk.messagebox("Invalid option","You can't go east.")
+        self.refresh()
+
+    def move_westgui(self):
+        room = worldgui.tile_at(self.player.x, self.player.y)
+        if worldgui.tile_at(room.x - 1, room.y):
+            self.player.move_west()
+        else:
+            Tk.messagebox("Invalid option","You can't go west.")
+        self.refresh()
+
+    def print_inventorygui(self):
+        if self.player.inventory:
+            self.player.inventory()
+        else:
+            Tk.messagebox("Invalid option.")
+        self.refresh()
+
+    def healgui(self):
+        room = worldgui.tile_at(self.player.x, self.player.y)
+        if self.player.hp < 100:
+            self.player.heal()
+        else:
+            Tk.messagebox("Invalid option.")
+        self.refresh()
+
+    def attackgui(self):
+        self.text_entry.insert(INSERT, "\n"+self.player.attack())
+
+    def refresh(self):
+        room = worldgui.tile_at(self.player.x, self.player.y)
+        self.text_entry.insert(INSERT, room.intro_text())
+        self.text_entry.insert(INSERT, str(room.modify_player(self.player)))
+
+        room = worldgui.tile_at(self.player.x, self.player.y)
+        if worldgui.tile_at(room.x, room.y + 1):
+            self.button_north.config(state=NORMAL)
+        else:
+            self.button_north.config(state=DISABLED)
+        if worldgui.tile_at(room.x, room.y - 1):
+            self.button_south.config(state=NORMAL)
+        else:
+            self.button_south.config(state=DISABLED)
+        if worldgui.tile_at(room.x + 1, room.y):
+            self.button_east.config(state=NORMAL)
+        else:
+            self.button_east.config(state=DISABLED)
+        if worldgui.tile_at(room.x - 1, room.y + 1):
+            self.button_west.config(state=NORMAL)
+        else:
+            self.button_west.config(state=DISABLED)
+
+        if isinstance(room, worldgui.EnemyTile) and room.enemy.is_alive():
+            self.button_attack.config(state=NORMAL)
+        else:
+            self.button_attack.config(state=DISABLED)
+
+        if not self.player.is_alive():
+            print("Your journey has come to an early end!")
+
+
+
 
 root = Tk()
 
