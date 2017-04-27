@@ -1,4 +1,3 @@
-#ERICK MCCOLLUM
 class purchaseOrder():
     # Employee Information
     empName = ''
@@ -45,29 +44,29 @@ class purchaseOrder():
         self.carYear = newCarYear
 
     def printEmployeeInfo(self):
-        print("\n"
-              "SALESPERSON INFORMATION:\n"
-              "NAME: " + str(self.empName), "\n"
-              "ID: " + str(self.empID), "\n"
-              "SPECIALTY: " + str(self.empSpecial), "\n"
-              "GENDER: " + str(self.empGender),"\n"
+        return("\n"
+              "SALESPERSON INFORMATION:" + "\n"
+              "NAME: " + str(self.empName) + "\n"
+              "ID: " + str(self.empID) + "\n"
+              "SPECIALTY: " + str(self.empSpecial) + "\n"
+              "GENDER: " + str(self.empGender) + "\n"
               "AGE: " + str(self.empAge))
 
     def printCustomerInfo(self):
-        print("\n"
+        return("\n"
               "CUSTOMER INFORMATION:\n"
-              "FIRST NAME: " + str(self.custFirstName), "\n"
-              "LAST NAME: " + str(self.custLastName), "\n"
-              "GENDER: " + str(self.custGender), "\n"
-              "AGE: " + str(self.custAge), "\n"
+              "FIRST NAME: " + str(self.custFirstName) + "\n"
+              "LAST NAME: " + str(self.custLastName) + "\n"
+              "GENDER: " + str(self.custGender) + "\n"
+              "AGE: " + str(self.custAge) + "\n"
               "MARITAL STATUS: " + str(self.custMarital))
 
     def printVehicleInfo(self):
-        print("\n"
-              "VEHICLE INFORMATION:\n"
-              "ID: " + str(self.carID), "\n"
-              "TYPE: " + str(self.carType), "\n"
-              "CONDITION: " + str(self.carCondition), "\n"
-              "YEAR: " + str(self.carYear), "\n"
-              "COLOR: " + str(self.carColor), "\n"
+        return("\n"
+              "VEHICLE INFORMATION:"+"\n"
+              "ID: " + str(self.carID) + "\n"
+              "TYPE: " + str(self.carType) + "\n"
+              "CONDITION: " + str(self.carCondition) + "\n"
+              "YEAR: " + str(self.carYear) + "\n"
+              "COLOR: " + str(self.carColor) + "\n"
               "PRICE: " + str(self.carPrice))
