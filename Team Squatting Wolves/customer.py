@@ -1,4 +1,3 @@
-#KYLE SAUCEDA
 class customer:
     FirstName = ''
     LastName = ''
