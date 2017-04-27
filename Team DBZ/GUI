@@ -39,51 +39,41 @@ class GUIWindow:
         room = worldgui.tile_at(self.player.x, self.player.y)
         if worldgui.tile_at(room.x, room.y - 1):
             self.player.move_north()
-        else:
-            Tk.messagebox("Invalid option","You can't go north")
         self.refresh()
 
     def move_southgui(self):
         room = worldgui.tile_at(self.player.x, self.player.y)
         if worldgui.tile_at(room.x, room.y + 1):
             self.player.move_south()
-        else:
-            Tk.messagebox("Invalid option","You can't go south.")
         self.refresh()
 
     def move_eastgui(self):
         room = worldgui.tile_at(self.player.x, self.player.y)
         if worldgui.tile_at(room.x + 1, room.y):
             self.player.move_east()
-        else:
-            Tk.messagebox("Invalid option","You can't go east.")
         self.refresh()
 
     def move_westgui(self):
         room = worldgui.tile_at(self.player.x, self.player.y)
         if worldgui.tile_at(room.x - 1, room.y):
             self.player.move_west()
-        else:
-            Tk.messagebox("Invalid option","You can't go west.")
         self.refresh()
 
     def print_inventorygui(self):
         if self.player.inventory:
             self.player.inventory()
-        else:
-            Tk.messagebox("Invalid option.")
         self.refresh()
 
     def healgui(self):
         room = worldgui.tile_at(self.player.x, self.player.y)
         if self.player.hp < 100:
             self.player.heal()
-        else:
-            Tk.messagebox("Invalid option.")
         self.refresh()
 
     def attackgui(self):
         self.text_entry.insert(INSERT, "\n"+self.player.attack())
+        self.refresh()
+
 
     def refresh(self):
         room = worldgui.tile_at(self.player.x, self.player.y)
@@ -110,6 +100,8 @@ class GUIWindow:
 
         if isinstance(room, worldgui.EnemyTile) and room.enemy.is_alive():
             self.button_attack.config(state=NORMAL)
+        elif isinstance(room, worldgui.EnemyTile) and room.enemy.is_alive():
+            self.button_attack.config(state=DISABLED)
         else:
             self.button_attack.config(state=DISABLED)
 
