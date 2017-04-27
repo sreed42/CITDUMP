@@ -34,8 +34,6 @@ Car5 = vehicle("Ferrari 488 Spider", "Blue", "Convertible", "New", "2016", "2727
 Car6 = vehicle("McLaren 650S", "Grey", "Coupe", "New", "2016", "349500")
 Car7 = vehicle("McLaren 675LT", "White", "Coupe", "New", "2016", "349500")
 
-#========================================idk if the above is right ====================
-
 class CarDealership(Frame):
     def __init__(self, root):
         Frame.__init__(self,root)
