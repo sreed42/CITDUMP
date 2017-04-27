@@ -1,4 +1,3 @@
-#KYLE SAUCEDA
 class vehicle:
     ID = 0
     Color = ''
