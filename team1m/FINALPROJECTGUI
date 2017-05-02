@@ -1,0 +1,172 @@
+from tkinter import *
+from base import Player, Room, Monster
+import random
+import time
+
+
+def go(direction):
+    global monster
+    if room.returnexits() == 1:
+        if direction == "left":
+            monster = seth
+            testtext.insert(END, "You see a "+monster.tellcolor()+" "+monster.tellname()+"\n")
+            drawbuttl.configure(state=DISABLED)
+            drawbuttr.configure(state=DISABLED)
+            drawbuttc.configure(state=DISABLED)
+            drawbutt0.configure(state=NORMAL)
+            drawbutt1.configure(state=NORMAL)
+            drawbutt2.configure(state=NORMAL)
+            drawbutt3.configure(state=NORMAL)
+            photo.configure(file=monster.tellcolor()+monster.tellname()+".gif")
+
+        else:
+            testtext.insert(END, "You can't go that way\n")
+
+    elif room.returnexits() == 2:
+        if direction == "left":
+            monster = seth
+            testtext.insert(END, "You see a " + monster.tellcolor() + " " + monster.tellname()+"\n")
+            drawbuttl.configure(state=DISABLED)
+            drawbuttr.configure(state=DISABLED)
+            drawbuttc.configure(state=DISABLED)
+            drawbutt0.configure(state=NORMAL)
+            drawbutt1.configure(state=NORMAL)
+            drawbutt2.configure(state=NORMAL)
+            drawbutt3.configure(state=NORMAL)
+            photo.configure(file=monster.tellcolor() + monster.tellname() + ".gif")
+
+        elif direction == "right":
+            monster = slime
+            testtext.insert(END, "You see a " + monster.tellcolor() + " " + monster.tellname()+"\n")
+            drawbuttl.configure(state=DISABLED)
+            drawbuttr.configure(state=DISABLED)
+            drawbuttc.configure(state=DISABLED)
+            drawbutt0.configure(state=NORMAL)
+            drawbutt1.configure(state=NORMAL)
+            drawbutt2.configure(state=NORMAL)
+            drawbutt3.configure(state=NORMAL)
+            photo.configure(file=monster.tellcolor() + monster.tellname() + ".gif")
+
+        else:
+            testtext.insert(END, "You can't go that way\n")
+            testtext.see(END)
+
+    else:
+        if direction == "left":
+            monster = seth
+            testtext.insert(END, "You see a " + monster.tellcolor() + " " + monster.tellname()+"\n")
+
+        elif direction == "center":
+            monster = ben
+            testtext.insert(END, "You see a " + monster.tellcolor() + " " + monster.tellname()+"\n")
+
+        elif direction == "right":
+            monster = slime
+            testtext.insert(END, "You see a " + monster.tellcolor() + " " + monster.tellname()+"\n")
+        drawbuttl.configure(state=DISABLED)
+        drawbuttr.configure(state=DISABLED)
+        drawbuttc.configure(state=DISABLED)
+        drawbutt0.configure(state=NORMAL)
+        drawbutt1.configure(state=NORMAL)
+        drawbutt2.configure(state=NORMAL)
+        drawbutt3.configure(state=NORMAL)
+        photo.configure(file=monster.tellcolor() + monster.tellname() + ".gif")
+
+    testtext.see(END)
+
+
+def fight(color):
+    global monster, seth, ben, slime, room, y, mike
+
+    testtext.insert(END, monster.tellname()+" takes "+monster.minushp(mike.fight(), color)+" points of damage.\n")
+    testtext.insert(END, "You take "+mike.minushp(monster.fight(), monster.returncolor())+" points of damage.\n")
+    testtext.see(END)
+    photo.configure(file=monster.tellcolor() + monster.tellname() + "atk.gif")
+    testpicture.update()
+    time.sleep(1)
+    photo.configure(file=monster.tellcolor() + monster.tellname() + ".gif")
+    if mike.returnhp() <= 0:
+        testtext.insert(END, "You died!")
+        drawbutt0.configure(state=DISABLED)
+        drawbutt1.configure(state=DISABLED)
+        drawbutt2.configure(state=DISABLED)
+        drawbutt3.configure(state=DISABLED)
+        photo.configure(file="GAMEOVER.gif")
+        testtext.see(END)
+
+    elif monster.tellhp() <= 0:
+        testtext.insert(END, monster.tellname()+" died!\n")
+
+        room = Room(random.randint(1, 3), random.randint(0, 3))
+
+        mike.lvlup()
+        testtext.insert(END,"You leveled up!\nYou have "+str(mike.returnhp())+" hit points\n")
+        testtext.see(END)
+        testtext.insert(END, room.findtreasure())
+        mike.updefense(room.gettreasure())
+        testtext.insert(END, mike.status())
+        y += 1
+        seth = Monster(y, random.randint(0, 2), random.randint(0, 3), random.randint(5, 6), random.randint(8, 11))
+        slime = Monster(y, random.randint(0, 2), random.randint(0, 3), random.randint(5, 6), random.randint(8, 11))
+        ben = Monster(y, random.randint(0, 2), random.randint(0, 3), random.randint(5, 6), random.randint(8, 11))
+        if room.returnexits() == 1:
+            testtext.insert(END, "You see a "+seth.tellcolor()+" "+seth.tellname()+" to your left\n")
+        elif room.returnexits() == 2:
+            testtext.insert(END, "You see a " + seth.tellcolor()+" "+seth.tellname() + " to your left\nYou see a "
+                            +slime.tellcolor()+" "+slime.tellname()+" to your right\n")
+        else:
+            testtext.insert(END, "You see a "+seth.tellcolor()+" "+seth.tellname()+" to your left\nYou see a "
+                            + slime.tellcolor()+" "+slime.tellname()+" to your right\nYou see a "
+                            +ben.tellcolor()+" "+ben.tellname()+" in front of you\n")
+        drawbuttl.configure(state=NORMAL)
+        drawbuttr.configure(state=NORMAL)
+        drawbuttc.configure(state=NORMAL)
+        drawbutt0.configure(state=DISABLED)
+        drawbutt1.configure(state=DISABLED)
+        drawbutt2.configure(state=DISABLED)
+        drawbutt3.configure(state=DISABLED)
+        photo.configure(file="BKG.gif")
+
+
+
+
+
+root = Tk()
+y = 1
+mike = Player(1, "Mike", random.randint(19, 24), random.randint(4, 7), [round(random.uniform(0.9, 1.1), 2),
+              round(random.uniform(0.9, 1.1), 2), round(random.uniform(0.9, 1.1), 2), round(random.uniform(0.9, 1.1), 2)])
+room = Room(1, random.randint(0, 3))
+seth = Monster(y, random.randint(0, 2), random.randint(0, 3), random.randint(5, 6), random.randint(8, 11))
+slime = Monster(y, random.randint(0, 2), random.randint(0, 3), random.randint(5, 6), random.randint(8, 11))
+ben = Monster(y, random.randint(0, 2), random.randint(0, 3), random.randint(5, 6), random.randint(8, 11))
+monster = "Nothing"
+photo = PhotoImage(file="BKG.gif")
+canvas = Canvas(root)
+scrollbar = Scrollbar(canvas)
+testpicture = Label(image=photo)
+testtext = Text(canvas, wrap=WORD, yscrollcommand=scrollbar.set, height=5, width=30)
+drawbutt0 = Button(root, bg="red", fg="white", text='Red Attack', command=lambda: fight(0), state=DISABLED)
+drawbutt1 = Button(root, bg="blue", fg="white", text='Blue Attack', command=lambda: fight(1), state=DISABLED)
+drawbutt2 = Button(root, bg="goldenrod", fg="white", text='Yellow Attack', command=lambda: fight(2), state=DISABLED)
+drawbutt3 = Button(root, bg="green", fg="white", text='Green Attack', command=lambda: fight(3), state=DISABLED)
+drawbuttl = Button(root, text='Go Left', command=lambda: go("left"))
+drawbuttr = Button(root, text='Go Right', command=lambda: go("right"))
+drawbuttc = Button(root, text='Go Center', command=lambda: go("center"))
+drawbuttq = Button(root, text='Quit', font=(None, 15), bg="red3", height=2, width=9, command=root.quit)
+testtext.insert(INSERT, "You are in a terrible dungeon full of horrible monsters. Use your color attacks to "
+                "defeat them.\n")
+testtext.insert(END, mike.status())
+testtext.insert(END, "There is a "+seth.tellcolor()+" "+seth.tellname()+" to your left.\n")
+testpicture.pack()
+canvas.pack(side=TOP, fill=BOTH, expand=TRUE)
+scrollbar.pack(side=RIGHT, fill=Y)
+testtext.pack(side=TOP, fill=BOTH, expand=TRUE)
+drawbutt0.pack(side=LEFT)
+drawbutt1.pack(side=LEFT)
+drawbutt2.pack(side=LEFT)
+drawbutt3.pack(side=LEFT)
+drawbuttq.pack(side=RIGHT)
+drawbuttl.pack(side=TOP)
+drawbuttc.pack(side=TOP)
+drawbuttr.pack(side=TOP)
+root.mainloop()
