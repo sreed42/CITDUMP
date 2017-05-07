@@ -11,6 +11,7 @@ import getpass
 root = Tk()
 
 ##########################################################################################################
+#Erick
 #PURCHASE ORDER
 def PO():
     pOrder = Tk()
@@ -173,6 +174,7 @@ def PO():
         messagebox.showinfo("Congrats!", "Your purchase order can be found on your desktop.")
         pOrder.destroy()
 
+#Kyle    
     #Buttons
     finishBut = Button(pOrder,text="Complete",command = lambda: finishPurOrder())
     finishBut.grid(row=17,column=0)
